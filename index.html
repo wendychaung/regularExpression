@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regularExpression</title>
+</head>
+<body>
+<script>
+//    var reg=/\bis\b/g;
+    var reg=new RegExp("\\bis\\b",'gi');
+    var str="he is a boy.This Is a dog";
+    var aft=str.replace(reg,'0');
+    console.log(aft);
+
+    var reg2=new RegExp(/[abc]/g);
+    var reg3=new RegExp(/[^abcd]/g);
+    var str2="a1b2c3d4";
+    var aft2=str2.replace(reg2,'X');
+    var aft3=str2.replace(reg3,'*');
+    console.log(aft3);
+
+    var reg4=new RegExp(/[a-zA-Z-]/g);
+    var str4="A1-b2-C3-D4-e5f6";
+    var aft4=str4.replace(reg4,"@");
+    console.log(aft4);
+
+    console.log('@123@abc@'.replace(/@$/g,'Q'));
+    console.log('1243553'.replace(/\d{3}/,'@@@'));
+
+//贪婪模式
+    console.log('123456789'.replace(/\d{3,6}/,'@@@'));
+//    非贪婪模式
+    console.log('123456789'.replace(/\d{3,6}?/,'@@@'));
+
+    console.log("he is a boy.ThisIs a dog".replace(/(is){2}/i,"MM"));
+
+    console.log("a1b2c3d4".replace(/([a-z]\d){3}/,"@$%&*"));
+
+    console.log("a1b2c3d4a1b2c3d4".replace(/(a|b)\d/g,"X"));
+
+    console.log("2017-01-31".replace(/-/g,"/"));
+
+//    $来获取分组
+    console.log("2017-01-31".replace(/(\d{4})-(\d{2})-(\d{2})/,'$2/$3/$1'));
+
+//	?:忽略分组
+    console.log("2017-01-31".replace(/(?:\d{4})-(\d{2})-(\d{2})/,'$1/$2'));
+</script>
+</body>
+</html>
